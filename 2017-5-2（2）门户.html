@@ -1,0 +1,522 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<script src="echarts.min.js"></script>
+	<style type="text/css">
+		* {
+			padding: 0;
+			margin: 0;
+		}
+
+		#outer {
+			height: 100vh;
+			width: 100vw;
+			background: #f7f7f7;
+			overflow: hidden;
+		}
+	</style>
+</head>
+
+<body>
+	<div id="outer">
+		<div style="height: 38%;width: 23%;background: white;float: left;margin:8px;">
+			<div style="height: 30px; width: 100%; background: #efeded; line-height: 30px;font-size:13px">部门会议任务达成</div>
+			<div id="div1" style="height: 90%;width: 100%;"></div>
+		</div>
+		<div style="height: 38%;width: 30%;background: white;float: left;margin:8px;">
+			<div style="height: 30px; width: 100%; background: #efeded; line-height: 30px; font-size: 13px">1111111
+			</div>
+			<div id="div2" style="height: 90%;width: 100%;"></div>
+		</div>
+		<div style="height: 38%;width: 40%;background: white;float: left;margin:8px;">
+			<div style="height: 30px; width: 100%; background: #efeded; line-height: 30px; font-size: 13px">1111111
+			</div>
+			<div id="div3" style="height: 90%;width: 100%;"></div>
+		</div>
+		<div style="clear: both;"></div>
+		<div style="height: 56%;width: 23%;background: white;float: left;margin:8px;">
+			<div style="height:47%;width:100%">
+				<div style="height: 30px; width: 100%; background: #e7e7e7; line-height: 30px; font-size: 13px">
+					会1议任务总体完成指数</div>
+				<div id="div4" style="height: 90%;width: 100%;"></div>
+			</div>
+			<div style="height: 8px; width: 100%; background: #f7f7f7"></div>
+			<div style="height:47%">
+				<div style="height: 30px; width: 100%; background: #e7e7e7; line-height: 30px; font-size: 13px">总控计划完成指数
+				</div>
+				<div id="div8" style="height: 90%;width: 100%;"></div>
+			</div>
+		</div>
+		<div style="height: 56%;width: 24%;background: white;float: left;margin:8px;">
+			<div style="height: 30px; width: 100%; background: #e7e7e7; line-height: 30px; font-size: 13px">1111111
+			</div>
+			<div id="div5" style="height: 90%;width: 100%;"></div>
+		</div>
+		<div style="height: 56%;width: 23%;background: white;float: left;margin:8px;">
+			<div style="height: 30px; width: 100%; background: #e7e7e7; line-height: 30px; font-size: 13px">1111111
+			</div>
+			<div id="div6" style="height: 90%;width: 100%;"></div>
+		</div>
+		<div style="height: 56%;width: 24%;background: white;float: left;margin:8px;">
+			<div style="height: 30px; width: 100%; background: #e7e7e7; line-height: 30px; font-size: 13px">1111111
+			</div>
+			<div id="div7" style="height: 90%;width: 100%;"></div>
+		</div>
+	</div>
+	<script>
+		var option1 = {
+			backgroundColor: 'white',
+			tooltip: {
+				trigger: 'axis',
+				axisPointer: { // 坐标轴指示器，坐标轴触发有效
+					type: 'shadow' // 默认为直线，可选为：'line' | 'shadow'
+				}
+			},
+			legend: {
+				data: ['已完成数量', '未完成数量'],
+				x: 'center',
+			},
+			color: ['#f8d133', '#fbedb4'],
+			grid: {
+				x: 65,
+				y: 30,
+				x2: 10,
+				y2: 10
+			},
+			xAxis: {
+				show: false
+			},
+			yAxis: {
+				data: ['设计管理', '成本招采', '项目管理', '项目运营', '产品策划', '事业部'],
+				axisLine: {
+					lineStyle: {
+						color: 'white'
+					}
+				},
+				axisLabel: {
+					textStyle: {
+						color: 'black'
+					}
+				}
+			},
+			series: [
+				{
+					name: '已完成数量',
+					type: 'bar',
+					stack: '1',
+					barWidth: 18,
+					label: {
+						color: '#000',
+						normal: {
+							show: true,
+							position: 'insideRight',
+							textStyle: {
+								color: '#000'
+							}
+						}
+					},
+					data: [64, 43, 59, 81, 73, 54],
+				},
+				{
+					name: '未完成数量',
+					type: 'bar',
+					stack: '1',
+					barWidth: 18,
+					label: {
+						normal: {
+							show: true,
+							position: 'insideRight',
+							textStyle: {
+								color: '#000'
+							}
+						}
+					},
+					data: [14, 13, 19, 18, 13, 15],
+				}
+			]
+		};
+		var option2 = {
+			backgroundColor: 'white',
+			tooltip: {
+				trigger: 'axis',
+				axisPointer: { // 坐标轴指示器，坐标轴触发有效
+					type: 'shadow' // 默认为直线，可选为：'line' | 'shadow'
+				}
+			},
+			grid: {
+				x: 20,
+				y: 10,
+				x2: 20,
+				y2: 50
+			},
+			xAxis: [{
+				type: 'category',
+				data: ['养老', '医疗', '写字楼', '纪念园'],
+				axisLine: {
+					lineStyle: {
+						color: '#d7d7d7'
+					}
+				},
+				axisLabel: {
+					textStyle: {
+						color: 'black'
+					}
+				}
+			}],
+			yAxis: [{
+				show: false
+			}],
+			series: [{
+				name: '会议任务达成',
+				type: 'bar',
+				barWidth: 18,
+				stack: '1',
+				data: [64, 43, 73, 54],
+				color: ['#f8d133'],
+				label: {
+					normal: {
+						show: true,
+						position: 'outside',
+						textStyle: {
+							color: '#000'
+						}
+					}
+				},
+			}]
+		};
+		var option3 = {
+			backgroundColor: 'white',
+			tooltip: {
+				trigger: 'axis'
+			},
+			legend: {
+				data: ['养老', '医疗', '写字楼', '纪念园']
+			},
+			grid: {
+				left: '3%',
+				right: '4%',
+				bottom: '3%',
+				containLabel: true
+			},
+			xAxis: {
+				type: 'category',
+				splitLine: { show: false },
+				boundaryGap: false,
+				data: ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月']
+			},
+			yAxis: {
+				splitLine: { show: false },
+				type: 'value'
+			},
+			series: [{
+				name: '养老',
+				type: 'line',
+				stack: '1',
+				data: [32, 67, 52, 74, 83, 69, 75, 95, 87, 94, 88, 99]
+			},
+			{
+				name: '医疗',
+				type: 'line',
+				stack: '2',
+				data: [48, 39, 43, 62, 51, 83, 56, 79, 95, 76, 95, 82]
+			},
+			{
+				name: '写字楼',
+				type: 'line',
+				stack: '3',
+				data: [52, 43, 67, 34, 41, 59, 69, 57, 42, 59, 76, 42]
+			},
+			{
+				name: '纪念园',
+				type: 'line',
+				stack: '4',
+				data: [18, 33, 22, 29, 21, 35, 42, 29, 57, 42, 56, 51]
+			}
+			]
+		};
+		var option4 = {
+			tooltip: {
+				trigger: 'item',
+				formatter: "{a} <br/>{b}: {c} ({d}%)"
+			},
+			grid: {
+				x: 0,
+				y: 0,
+				x2: 0,
+				y2: 0
+			},
+			color: ['#f8d133', '#fbedb4'],
+			series: [
+				{
+					type: 'pie',
+					startAngle: 180, endAngle: 0,
+					radius: ['30%', '50%'],
+					avoidLabelOverlap: false,
+					itemStyle: {
+						normal: {
+							label: {
+								show: true,
+								formatter: '{b} : {c}',
+								textStyle: {
+									color: '#000'
+								}
+							},
+							labelLine: {
+								show: true,
+								length: 5,
+							}
+						}
+					},
+					data: [
+						{ value: 330, name: '已完成计划' },
+						{ value: 70, name: '未完成计划' }
+					]
+				}
+			]
+		};
+		var option5 = {
+			backgroundColor: 'white',
+			tooltip: {
+				trigger: 'axis',
+				axisPointer: { // 坐标轴指示器，坐标轴触发有效
+					type: 'shadow' // 默认为直线，可选为：'line' | 'shadow'
+				}
+			},
+			color: ['#769cec', '#98e09b', '#f4dd94'],
+			legend: {
+				data: ['材料量清单', '材料排产单', '材料进场验收'],
+				x: 'left',
+			},
+			grid: {
+				x: 20,
+				y: 40,
+				x2: 20,
+				y2: 30
+				//					left: '3%',
+				//					right: '4%',
+				//					bottom: '3%',
+				//					containLabel: true
+			},
+			xAxis: [{
+				type: 'category',
+				splitLine: { show: false },
+				data: ['养老', '医疗', '写字楼', '纪念园'],
+				axisLine: {
+					lineStyle: {
+						color: '#d7d7d7'
+					}
+				},
+				axisLabel: {
+					textStyle: {
+						color: 'black'
+					}
+				}
+			}],
+			yAxis: [{
+				show: false,
+				splitLine: { show: false },
+				type: 'value'
+			}],
+			series: [{
+				name: '材料量清单',
+				type: 'bar',
+				stack: '1',
+				label: {
+					normal: {
+						show: true,
+						position: 'insideTop'
+					}
+				},
+				data: [220, 112, 230, 150]
+			},
+			{
+				name: '材料排产单',
+				type: 'bar',
+				barWidth: 20,
+				stack: '1',
+				label: {
+					normal: {
+						show: true,
+						position: 'insideTop'
+					}
+				},
+				data: [120, 132, 201, 120]
+			},
+			{
+				name: '材料进场验收',
+				type: 'bar',
+				stack: '1',
+				label: {
+					normal: {
+						show: true,
+						position: 'insideTop'
+					}
+				},
+				data: [120, 132, 101, 220]
+			},
+			]
+		};
+		var option6 = {
+			backgroundColor: 'white',
+			tooltip: {
+				trigger: 'axis',
+				axisPointer: { // 坐标轴指示器，坐标轴触发有效
+					type: 'shadow' // 默认为直线，可选为：'line' | 'shadow'
+				}
+			},
+			color: ['#75befb', '#98e09b'],
+			grid: {
+				left: '3%',
+				right: '4%',
+				bottom: '3%',
+				containLabel: true
+			},
+			xAxis: {
+				type: 'value',
+				splitLine: { show: false },
+			},
+			yAxis: {
+				type: 'category',
+				splitLine: { show: false },
+				data: ['养老', '医疗', '写字楼', '纪念园']
+			},
+			series: [
+
+				{
+					name: '视频广告',
+					type: 'bar',
+					stack: '1',
+					label: {
+						normal: {
+							show: true,
+							position: 'insideRight'
+						}
+					},
+					data: [150, 212, 130, 120]
+				},
+				{
+					name: '搜索引擎',
+					type: 'bar',
+					barWidth: 20,
+					stack: '1',
+					label: {
+						normal: {
+							show: true,
+							position: 'insideRight'
+						}
+					},
+					data: [50, 32, 91, 33]
+				}
+			]
+		};
+		var option7 = {
+			title: {
+				text: '南丁格尔玫瑰图',
+				x: 'center',
+				y: 'center'
+			},
+			tooltip: {
+				trigger: 'item',
+				formatter: "{a} <br/>{b}: {c} ({d}%)"
+			},
+			//			    legend: {
+			//			        orient: 'vertical',
+			//			        x: 'left',
+			//			        data:['已完成计划','未完成计划']
+			//			    },
+			color: ['#f8d133', '#fbedb4'],
+			series: [
+				{
+					type: 'pie',
+					startAngle: 180, endAngle: 0,
+					radius: ['30%', '50%'],
+					avoidLabelOverlap: false,
+					itemStyle: {
+						normal: {
+							label: {
+								show: true,
+								formatter: '{d}%'
+							},
+							labelLine: {
+								show: true,
+								length: 5
+							}
+						}
+					},
+					data: [
+						{ value: 30, name: '已完成计划' },
+						{ value: 70, name: '未完成计划' }
+					]
+				}
+			]
+		};
+		var option8 = {
+			tooltip: {
+				trigger: 'item',
+				formatter: "{a} <br/>{b}: {c} ({d}%)"
+			},
+			//			    legend: {
+			//			        orient: 'vertical',
+			//			        x: 'left',
+			//			        data:['已完成计划','未完成计划']
+			//			    },
+			color: ['#f8d133', '#fbedb4'],
+			series: [
+				{
+					type: 'pie',
+					startAngle: 180, endAngle: 0,
+					radius: ['30%', '50%'],
+					avoidLabelOverlap: false,
+					itemStyle: {
+						normal: {
+							label: {
+								show: true,
+								formatter: '{b} : {c}',
+								textStyle: {
+									color: '#000'
+								}
+							},
+							labelLine: {
+								show: true,
+								length: 5
+							}
+						}
+					},
+					data: [
+						{ value: 30, name: '已完成计划' },
+						{ value: 70, name: '未完成计划' }
+					]
+				}
+			]
+		};
+		var dom1 = document.getElementById('div1');
+		var dom2 = document.getElementById('div2');
+		var dom3 = document.getElementById('div3');
+		var dom4 = document.getElementById('div4');
+		var dom5 = document.getElementById('div5');
+		var dom6 = document.getElementById('div6');
+		var dom7 = document.getElementById('div7');
+		var dom8 = document.getElementById('div8');
+		var chart1 = echarts.init(dom1);
+		var chart2 = echarts.init(dom2);
+		var chart3 = echarts.init(dom3);
+		var chart4 = echarts.init(dom4);
+		var chart5 = echarts.init(dom5);
+		var chart6 = echarts.init(dom6);
+		var chart7 = echarts.init(dom7);
+		var chart8 = echarts.init(dom8);
+		chart1.setOption(option1);
+		chart2.setOption(option2);
+		chart3.setOption(option3);
+		chart4.setOption(option4);
+		chart5.setOption(option5);
+		chart6.setOption(option6);
+		chart7.setOption(option7);
+		chart8.setOption(option8);
+	</script>
+</body>
+
+</html>
