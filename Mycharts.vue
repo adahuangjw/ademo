@@ -32,13 +32,13 @@
 			</div>
 			<div class="superviseTable">
 				<tab>
-					<tab-item class="tab-item-left" selected>总控计划达成率（按专业）全公司</tab-item>
+					<tab-item class="tab-item-left" selected>总控计划达成率</tab-item>
 				</tab>
 				<div class="outer"></div>
 			</div>
 			<div class="superviseTable">
 				<tab>
-					<tab-item class="tab-item-left" selected>全国（业态）质量关闭率</tab-item>
+					<tab-item class="tab-item-left" selected>全国质量关闭率</tab-item>
 				</tab>
 				<br />
 				<div id="qualitychart" style="width: 100%;height: 300px;"></div>
