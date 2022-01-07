@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+		}
+
+		#out {
+			min-height: 100vh;
+			display: flex;
+		}
+
+		#leftpart {
+			flex: 0 0 280px;
+		}
+
+		#rightpart {
+			flex: 1;
+		}
+
+		#leftop {
+			background: #5b7a59;
+			height: 45px;
+		}
+
+		#rightop {
+			background: #668964;
+			height: 45px;
+		}
+
+		#rightop p {
+			font-size: 22px;
+			color: white;
+			line-height: 45px;
+			margin-left: 15px;
+		}
+
+		#leftop svg {
+			margin-left: 10px;
+			margin-top: 12px;
+		}
+
+		#lefttwo {
+			height: 50px;
+			background: #f7f7f7;
+		}
+
+		#lefttwo p {
+			font-size: 20px;
+			line-height: 50px;
+			text-align: center;
+		}
+
+		#mailbox {
+			height: 40px;
+			background: #f7f7f7;
+			position: relative;
+		}
+
+		#mailbox p {
+			font-size: 16px;
+			line-height: 40px;
+			margin-left: 15px;
+		}
+
+		#mailbox p b {
+			position: absolute;
+			right: 20px;
+		}
+
+		#todaybox {
+			height: 40px;
+			background: #f7f7f7;
+			position: relative;
+		}
+
+		#todaybox p {
+			font-size: 16px;
+			line-height: 40px;
+			margin-left: 15px;
+		}
+
+		#todaybox p b {
+			position: absolute;
+			right: 20px;
+		}
+
+		#add {
+			background: #668964;
+			height: 45px;
+			border-radius: 5px;
+			width: 95%;
+			margin-top: 35px;
+			margin-left: 30px;
+			border: 2px solid white;
+			color: white;
+			font-size: 18px;
+		}
+
+		a {
+			text-decoration: none;
+			color: black;
+		}
+
+		.wjjlb li {
+			background: #f7f7f7;
+			padding: 5px 10px;
+		}
+
+		.wjj1qd li a {
+			color: red;
+		}
+
+		.wjj1qd li {
+			list-style: none;
+		}
+
+		.wjj1qd {
+			position: relative;
+		}
+
+		.wjj1qd b {
+			position: absolute;
+			right: 12px;
+			color: black;
+		}
+
+		.outqd a {
+			color: red;
+		}
+
+		.wjjyjcd {
+			display: none;
+			position: absolute;
+		}
+
+		.wjjyjcd li {
+			list-style: none;
+			width: 150px;
+			line-height: 30px;
+			text-align: center;
+			border: 1px solid black;
+		}
+
+		.wjjname {
+			display: none;
+		}
+
+		.btn {
+			width: 80px;
+			height: 30px;
+		}
+
+		.newtext {
+			width: 185px;
+			height: 30px;
+		}
+
+		.qdyjcd {
+			display: none;
+			position: absolute;
+		}
+
+		.qdyjcd li {
+			list-style: none;
+			width: 150px;
+			line-height: 30px;
+			text-align: center;
+			border: 1px solid black;
+		}
+
+		.caretnewqdj {
+			display: none;
+		}
+
+		.removeqdj {
+			display: none;
+		}
+
+		#listdiv {
+			width: 95%;
+			margin-top: 15px;
+			margin-left: 30px;
+		}
+
+		#listdiv a {
+			display: inline-block;
+			height: 30px;
+			width: 100%;
+			background: burlywood;
+			color: black;
+			margin: 5px auto;
+			line-height: 30px;
+			padding-left: 10px;
+		}
+
+		#listdiv input {
+			margin: 0 10px 0 0;
+		}
+
+		#finishedlist {
+			width: 95%;
+			margin-top: 15px;
+			margin-left: 30px;
+			display: none;
+		}
+
+		#finishedlist a {
+			display: inline-block;
+			height: 30px;
+			width: 100%;
+			background: burlywood;
+			color: black;
+			margin: 5px auto;
+			line-height: 30px;
+			padding-left: 10px;
+		}
+
+		#finishedlist input {
+			margin: 0 10px 0 0;
+		}
+
+		.changelist {
+			margin-left: 50px;
+		}
+	</style>
+</head>
+
+<body>
+	<div id="out">
+		<div id="leftpart">
+			<div id="leftop">
+				<svg class="list-toggle" width="20px" height="20px">
+					<g>
+						<path d="M0.5,3.5l19,0" style="fill:none;stroke-width:1px;stroke:white;"></path>
+						<path d="M0.5,9.53l19,0" style="fill:none;stroke-width:1px;stroke:white;"></path>
+						<path d="M0.5,15.5l19,0" style="fill:none;stroke-width:1px;stroke:white;"></path>
+					</g>
+				</svg>
+			</div>
+			<div id="lefttwo">
+				<p>我的</p>
+			</div>
+			<div class="menu">
+
+			</div>
+			<input type="button" value="创建清单" class="btn" />
+			<input type="text" class="newtext" />
+		</div>
+		<div id="rightpart">
+			<div id="rightop">
+				<p>任务列表</p>
+			</div>
+			<input type="text" value="" id="add" />
+			<div id="listdiv"> </div>
+			<input type="button" value="隐藏已完成任务" class="changelist" />
+			<div id="finishedlist"></div>
+		</div>
+	</div>
+	<ul class="wjjyjcd">
+		<li>重命名文件夹</li>
+		<li>解除组合</li>
+	</ul>
+	<ul class="qdyjcd">
+		<li class="caretnewqdj">创建文件夹</li>
+		<li class="removeqdj">从文件夹移除</li>
+		<li>重命名清单</li>
+		<li>删除清单</li>
+	</ul>
+
+	<!--//设置文件夹和清单的模板，
+		//判断如果type是list（即类型是清单），则添加一个outqd的类
+		//如果有子目录，并且显示状态为true（即为显示状态）则添加ul（即添加子目录）
+		//添加子目录
+		//添加路由，将该清单的id赋给路由-->
+	<script type="text/template" id="ejlb">
+			<div id="mailbox"><p><a href="#all">收件箱<b>1</b></a></p></div>
+				<div id="todaybox"><p><a href="#">今天<b>1</b></a></p></div>
+				<ul class="wjjlb">
+					<%for(var i=0,j=arr.length;i<j;i++){%>
+						<li tid="<%=arr[i].id%>" <%if(arr[i].type == 'list'){%>class="outqd"<%}else{%>class="qdj"<%}%>><a href="javascript:;" class="qdja"><span><%=arr[i].name%></span><input type="text" class="wjjname" value="<%=arr[i].name%>"></a>
+							<%if(arr[i].childs != '' && arr[i].expand == true){%>
+								<ul class="wjj1qd">
+								<%for(var a = 0,b =arr[i].childs.length;a<b;a++){
+									var len = listarr.filter(function(n){
+										return n.type == arr[i].childs[a].id && n.tick == 0;
+									}).length;
+									%>
+									<li class="outqd" tid="<%=arr[i].childs[a].id%>"><a href="#list-<%=arr[i].childs[a].id%>"><span><%=arr[i].childs[a].name%></span><b><%=len%></b><input type="text" value="<%=arr[i].childs[a].name%>" class="wjjname"></a></li>	
+								<%}%>
+									</ul>
+							<%}%>	
+						</li>
+					<%}%>
+					
+				</ul>
+		</script>
+
+	<!--//设置右侧列表模板，如果tick值为1，则复选框为选中状态-->
+	<script type="text/template" id="addlist">
+			<%for(var i=0,a=listarr.length;i<a;i++){%>
+				<a tid ="<%=listarr[i].id%>" ><input type="checkbox" <%if(listarr[i].tick == 1){%>checked<%}%>><%=listarr[i].name%></a>
+			<%}%> 
+		</script>
+
+	<script type="text/javascript" src="public/util.js"></script>
+	<script type="text/javascript" src="public/ejs.min.js"></script>
+	<script type="text/javascript" src="public/jquery.min.js"></script>
+
+	<script type="text/javascript">
+		// 从localstorage中获取nav的数据；
+		var arr = get('nav');
+		//获取右侧清单数据
+		var listarr = get('listcase');
+		//如果数据为空，则从json中获取，如果不为空则直接使用
+		if (arr.length == 0) {
+			$.get('json/navlist.json', function (data) {
+				refreshnav();
+				save('nav', data);
+			})
+		} else {
+			refreshnav();
+		}
+
+		//刷新页面的函数
+		function refreshnav() {
+			var data = Util.getsonqd(arr, "0");
+			//获取模板
+			var newarr = $('#ejlb').html();
+			//绑定数据
+			var newhtml = ejs.render(newarr, { arr: data, listarr: listarr });
+			//将数据插入到div中
+			$('.menu').html(newhtml);
+			$("#mailbox").find('b').html(listarr.filter(function (o) {
+				return o.tick == 0;
+			}).length);
+		}
+
+		//把数据保存到localstorage中
+		function save(key, val) {
+			var val = JSON.stringify(val);
+			localStorage.setItem(key, val);
+		}
+
+		//获取localstorage中的数据
+		function get(key) {
+			var val = localStorage.getItem(key);
+			if (val) {
+				val = JSON.parse(val);
+				return val;
+			} else {
+				return [];
+			}
+		}
+
+		//改变数据的函数
+		function changenav(obj) {
+			for (var i = 0, a = arr.length; i < a; i++) {
+				if (arr[i].id == obj.id) {
+					for (var j in obj) {
+						arr[i][j] = obj[j];
+					}
+					break;
+				}
+			}
+		}
+
+		//点击文件夹显示和隐藏下面的清单（此方法是隐藏状态下，直接删除下面的清单）
+		$('.menu').on('click', '.qdja span', function () {
+			if ($(this).parents('li').find('ul').length != 0) {
+				changenav({ id: $(this).parents('li').attr('tid'), expand: false });
+			} else {
+				changenav({ id: $(this).parents('li').attr('tid'), expand: true });
+			}
+			refreshnav();
+			save('nav', arr);
+		})
+
+		//拖拽清单的函数
+		$('.menu').on('dragstart', '.outqd a', function (e) {
+			var qdid = e.originalEvent.dataTransfer.setData('qdname', $(this).parent().attr('tid'));
+		}).on('dragend', '.outqd a', function (e) {
+		})
+
+		//把清单放入文件夹的函数
+		$('.menu').on('dragover', '.qdj', function (e) {
+			//阻止默认事件，默认有些浏览器是不让文件拖拽进去的
+			e.preventDefault();
+		}).on('drop', '.qdj', function (e) {
+			//获取拖拽的清单名字，如果放入某文件夹，则改变该清单的pid，并刷新和保存localstorage中的数据
+			var qdid = e.originalEvent.dataTransfer.getData('qdname');
+			var jid = $(this).attr('tid');
+			for (var i = 0, a = arr.length; i < a; i++) {
+				if (arr[i].id == qdid) {
+					arr[i].pid = jid;
+					refreshnav();
+					save('nav', arr);
+					break;
+				}
+			}
+		})
+
+		//文件夹的右击菜单
+		var clickli = '';
+		$('.menu').on('contextmenu', '.qdj > a', function (e) {
+			//菜单的位置为鼠标点击的位置
+			$('.wjjyjcd').css({ top: e.clientY, left: e.clientX });
+			$('.wjjyjcd').show();
+			clickli = $(this);
+			return false;
+		})
+
+		//鼠标单击任意地方，右键菜单消失
+		$(document).on('click', function () {
+			$('.wjjyjcd').hide();
+			$('.qdyjcd').hide();
+		})
+
+		//文件夹的右击菜单点击事件
+		$('.wjjyjcd').on('click', 'li', function () {
+			//当点击'重命名'时，出现文本框，并且把文件夹原来的名字赋值给文本框，此时可以修改文本框内容
+			if ($(this).html() == "重命名文件夹") {
+				clickli.find('.wjjname').show();
+				clickli.find('.wjjname').focus();
+				clickli.find('span').hide();
+				//当点击“解除组合”时
+			} else if ($(this).html() == "解除组合") {
+				var id = clickli.parent().attr('tid');
+				for (var i = 0, a = arr.length; i < a; i++) {
+					//如果文件夹下面有清单，则通过id获取清单的pid，并且将pid修改成0，即：将清单放到根目录上面
+					if (id == arr[i].pid) {
+						arr[i].pid = "0";
+					}
+					//删除文件夹
+					if (id == arr[i].id) {
+						arr.splice(i, 1);
+						i--;
+						a--;
+					}
+				}
+				refreshnav();
+				save('nav', arr);
+			}
+		})
+
+		//点击添加清单的函数
+		$('.btn').on('click', function () {
+			//如果文本框的值不为空，则添加一个新的清单到列表，新添加的清单在根目录上
+			if ($('.newtext').val() != '') {
+				arr.push({ "id": Util.uuid(), "pid": "0", "type": "list", "name": $('.newtext').val(), "expand": true, });
+				$('.newtext').val('');
+				save('nav', arr);
+				refreshnav();
+			} else {
+				alert('名字不能为空');
+			}
+		})
+
+		//文件夹文本框失去焦点事件
+		$('.menu').on('blur', '.qdj > a input', function (e) {
+			clickli.find('.wjjname').hide();
+			clickli.find('span').show();
+			var name = clickli.find('.wjjname').val();
+			var id = clickli.parent().attr('tid');
+			//将新的内容赋值给name，即修改name值
+			for (var i = 0, a = arr.length; i < a; i++) {
+				if (id == arr[i].id) {
+					arr[i].name = name;
+				}
+			}
+			refreshnav();
+			save('nav', arr);
+		})
+
+		//清单的 右击菜单
+		var clickli1 = '';
+		$('.menu').on('contextmenu', '.outqd > a', function (e) {
+			$('.qdyjcd').css({ top: e.clientY, left: e.clientX });
+			var id1 = $(this).parent().attr('tid');
+			for (var i = 0, a = arr.length; i < a; i++) {
+				//通过pid来判断清单在根目录上还是在文件夹里面
+				if (id1 == arr[i].id) {
+					//如果清单在根目录上，则没有“从文件夹移除”这一项
+					if (arr[i].pid == '0') {
+						$('.caretnewqdj').show();
+						$('.removeqdj').hide();
+						//如果清单在文件夹下面，则没有“创建文件夹”这一项				
+					} else {
+						$('.removeqdj').show();
+						$('.caretnewqdj').hide();
+					}
+				}
+			}
+			$('.qdyjcd').show();
+			clickli1 = $(this);
+			return false;
+		})
+
+		//清单右击菜单的点击事件
+		$('.qdyjcd').on('click', 'li', function () {
+			//当点击“创建文件夹”时，pid为0，即将文件夹放在根目录上，
+			if ($(this).html() == '创建文件夹') {
+				var id = clickli1.parent().attr('tid');
+				var uuid = Util.uuid();
+				arr.push({ "id": uuid, "pid": "0", "type": "directory", "name": "文件夹", "expand": true, });
+				//如果清单的pid等于文件夹的id，则该清单是该文件夹的子目录
+				for (var i = 0, a = arr.length; i < a; i++) {
+					if (id == arr[i].id) {
+						arr[i].pid = uuid;
+						save('nav', arr);
+						refreshnav();
+						//通过属性选择器（li中有tid = 创建文件夹时的id的元素），获取需要的li，
+						//即新创建的文件夹，让其下面的文本框显示，这样就可以在创建文件夹的时候，修改文件夹名字
+						var $pa = $('.menu').find('li[tid=' + uuid + '] > a');
+						$pa.find('.wjjname').show();
+						$pa.find('span').hide();
+						clickli = $pa;
+						break;
+					}
+				}
+				//当点击“从文件夹移除”时，将选择的清单的pid变成0，即：将清单放到根目录上，并且保存数据，刷新页面	
+			} else if ($(this).html() == '从文件夹移除') {
+				var id = clickli1.parent().attr('tid');
+				for (var i = 0, a = arr.length; i < a; i++) {
+					if (id == arr[i].id) {
+						arr[i].pid = "0";
+					}
+				}
+				refreshnav();
+				save('nav', arr);
+				//当点击“重命名”时，出现文本框，并把清单原来的名字赋给文本框，此时可以修改文本框内容
+			} else if ($(this).html() == '重命名清单') {
+				clickli1.find('.wjjname').show();
+				clickli1.find('.wjjname').focus();
+				clickli1.find('span').hide();
+				//当点击“删除”时，将此清单移除，并且保存数据，刷新页面
+			} else if ($(this).html() == '删除清单') {
+				var id = clickli1.parent().attr('tid');
+				for (var i = 0, a = arr.length; i < a; i++) {
+					if (id == arr[i].id) {
+						arr.splice(i, 1);
+						i--;
+						a--;
+					}
+				}
+				refreshnav();
+				save('nav', arr);
+			}
+		})
+
+		//清单文本框失去焦点事件
+		$('.menu').on('blur', '.outqd > a input', function (e) {
+			clickli1.find('.wjjname').hide();
+			clickli1.find('span').show();
+			var name = clickli1.find('.wjjname').val();
+			var id = clickli1.parent().attr('tid');
+			for (var i = 0, a = arr.length; i < a; i++) {
+				if (id == arr[i].id) {
+					arr[i].name = name;
+				}
+			}
+			refreshnav();
+			save('nav', arr);
+		})
+
+
+		//初始化未完成清单列表
+		function refreshlist(listarr) {
+			//将localstorage中的数据过滤出来tick =0的数据
+			var listarrfin = listarr.filter(function (o) {
+				return o.tick == 0;
+			})
+			//获取模板
+			var newarr = $('#addlist').html();
+			//绑定数据
+			var newhtml = ejs.render(newarr, { listarr: listarrfin });
+			//把数据插入到div
+			$('#listdiv').html(newhtml);
+		}
+
+		//初始化已完成清单列表
+		function refreshfinlist(listarr) {
+			//将localstorage中的数据过滤出来tick =1的数据
+			var listarrunfin = listarr.filter(function (o) {
+				return o.tick == 1;
+			})
+			//获取模板
+			var newarr = $('#addlist').html();
+			//绑定数据
+			var newhtml = ejs.render(newarr, { listarr: listarrunfin });
+			//把数据插入到div
+			$('#finishedlist').html(newhtml);
+		}
+		//初始化已完成和未完成两个页面
+		refreshlist(listarr);
+		refreshfinlist(listarr);
+
+		//按下enter键，添加清单列表
+		$('#add').on('keydown', function (e) {
+			var addname = $(this).val();
+			if (e.keyCode == 13 && addname != '') {
+				var type = 0;
+				//如果路由的地址以#list-开头
+				if (location.hash.indexOf("#list-") != -1) {
+					//截取#list-后面的字符串
+					var str = location.hash.split('#list-')[1];
+					type = str;
+				}
+				//插入新的清单列表，将数据存放到listarr中，清单的type就是截取路由的字符串（即他的跟目录的路由就是根目录的id）
+				listarr.push({ name: addname, id: Util.uuid(), type: type, tick: 0 });
+				save('listcase', listarr);
+				$(this).val('');
+				refreshlist(listarr.filter(function (e) {
+					return e.type == location.hash.split("#list-")[1];
+				}));
+			}
+		})
+
+		//点击复选框修改localstorage中tick的值
+		$('#rightpart').on('click', 'input[type =checkbox]', function () {
+			for (var i = 0, a = listarr.length; i < a; i++) {
+				if ($(this).parent().attr('tid') == listarr[i].id) {
+					//判断复选框是否为选中状态，选中则修改tick的值为1，未选中则修改tick的值为0
+					if ($(this).prop('checked') == true) {
+						listarr[i].tick = 1;
+					} else {
+						listarr[i].tick = 0;
+					}
+					refreshnav();
+					save('listcase', listarr);
+					refreshlist(listarr);
+					refreshfinlist(listarr);
+					break;
+				}
+			}
+		})
+
+		//点击按钮显示和隐藏已完成的清单列表
+		$('.changelist').on('click', function () {
+			if ($(this).val() == '隐藏已完成任务') {
+				$(this).val('显示已完成任务');
+				$('#finishedlist').show();
+			} else if ($(this).val() == '显示已完成任务') {
+				$(this).val('隐藏已完成任务');
+				$('#finishedlist').hide();
+			}
+		})
+
+		//路由改变时的事件
+		$(window).on('hashchange', function () {
+			//如果路由是all，即全部清单列表
+			if (location.hash == "#all") {
+				refreshlist(listarr);
+				refreshfinlist(listarr);
+				//					$('#finishedlist').show();
+			} else if (location.hash.indexOf("#list-") != -1) {
+				var str = location.hash.split("#list-")[1];
+				var tmp = listarr.filter(function (e) {
+					return e.type == str;
+				});
+				refreshlist(tmp);
+				refreshfinlist(tmp);
+				$('#finishedlist').hide();
+			}
+		})
+	</script>
+</body>
+
+</html>
